@@ -25,6 +25,28 @@ class StagiaireController extends AbstractController
         ]);
     }
 
+        /**
+     * @Route("/up", name="app_stagiaire_up", methods={"GET"})
+     */
+    public function update(StagiaireRepository $stagiaireRepository): Response
+    {
+        return $this->render('stagiaire/update.html.twig', [
+            'stagiaires' => $stagiaireRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/del", name="app_stagiaire_del", methods={"GET"})
+     */
+    public function del(StagiaireRepository $stagiaireRepository): Response
+    {
+        return $this->render('stagiaire/delete.html.twig', [
+            'stagiaires' => $stagiaireRepository->findAll(),
+        ]);
+    }
+    
+
+
     /**
      * @Route("/new", name="app_stagiaire_new", methods={"GET", "POST"})
      */
@@ -44,6 +66,7 @@ class StagiaireController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
 
     /**
      * @Route("/{id}", name="app_stagiaire_show", methods={"GET"})
